@@ -1,5 +1,3 @@
-
-// Array of questions (you can add/edit as many as you want)
 const questions = [
     {
     question: "What year was Liverpool FC founded?",
@@ -105,12 +103,12 @@ const questions = [
 ];
 
 
-// ──────────────────────────────────────────────
+
 let currentQuestion = 0;
 let userAnswers = new Array(questions.length).fill(null);
 const total = questions.length;
 
-// Elements
+
 const startScreen = document.getElementById('start-screen');
 const quizDiv = document.getElementById('quiz');
 const navigation = document.getElementById('navigation');
@@ -124,13 +122,13 @@ const currentNum = document.getElementById('currentQuestionNum');
 const totalNum = document.getElementById('totalQuestions');
 
 
-// Initialize
+
 function init() {
     totalNum.textContent = total;
     renderQuestion(0);
 }
 
-// Render single question
+
 function renderQuestion(index) {
     currentQuestion = index;
     currentNum.textContent = index + 1;
@@ -162,14 +160,14 @@ function renderQuestion(index) {
 
     quizDiv.appendChild(div);
 
-    // Update buttons
+    
     prevBtn.disabled = index === 0;
     nextBtn.style.display = index === total - 1 ? 'none' : 'inline-block';
     submitBtn.style.display = index === total - 1 ? 'inline-block' : 'none';
 }
 
 
-// Save answer when radio changes
+
 quizDiv.addEventListener('change', (e) => {
     if (e.target.type === 'radio') {
         const value = parseInt(e.target.value);
@@ -178,7 +176,7 @@ quizDiv.addEventListener('change', (e) => {
 });
 
 
-// Navigation
+
 prevBtn.addEventListener('click', () => {
     if (currentQuestion > 0) {
         renderQuestion(currentQuestion - 1);
@@ -194,7 +192,7 @@ nextBtn.addEventListener('click', () => {
 submitBtn.addEventListener('click', showResult);
 
 
-// Calculate & Show Result
+
 function showResult() {
     let score = 0;
     userAnswers.forEach((ans, i) => {
@@ -230,7 +228,7 @@ function showResult() {
 }
 
 
-// Start / Restart
+
 document.getElementById('startBtn').addEventListener('click', () => {
     startScreen.style.display = 'none';
     quizDiv.style.display = 'block';
